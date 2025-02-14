@@ -5,7 +5,7 @@
 
 #include "Interfaces/IClassCollect.mqh"
 
-#include "../../Utils/PointerUtils.mqh"
+#include <UCUtils/PointerUtils.mqh>
 
 template<typename T>
 class CClassCollect : public IClassCollect<T*>
