@@ -1,5 +1,5 @@
-# Aviso
+# Notice
 
-Esta biblioteca requer classes da biblioteca UCUtils.
+This library requires classes from the UCUtils library. 
 
-🔗 Necessário clonar o repositório [UCUtils](https://github.com/xPretti/UCUtils) em "MQL5/Include".
+🔗 You need to clone the [UCUtils](https://github.com/xPretti/UCUtils) repository into "MQL5/Include".
