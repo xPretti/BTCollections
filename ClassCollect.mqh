@@ -34,6 +34,7 @@ class CClassCollect : public IClassCollect<T*>
 
     //- SET
     virtual bool Insert(T* value);
+    virtual bool Insert(int index, T* value);
     virtual bool Set(int index, T* value);
     virtual bool Replace(int index, T* value);
     virtual bool Remove(int index);
@@ -122,6 +123,25 @@ bool CClassCollect::Insert(T* value)
   if(CPointerUtils::IsValid(value))
     {
       return (data.Insert(value));
+    }
+  return (false);
+}
+
+/**
+ * Método de insersão de valor em um index especifico
+ * Move todos os elementos para frente e insere o novo elemento na posição indicada
+ *
+ * @param index Posição
+ * @param value Valor
+ * @return true Caso seja inserido, independente se foi ou não na posição indicada
+ * @return false O valor não foi inserido
+ */
+template<typename T>
+bool CClassCollect::Insert(int index, T* value)
+{
+  if(CPointerUtils::IsValid(value))
+    {
+      return (data.Insert(index, value));
     }
   return (false);
 }

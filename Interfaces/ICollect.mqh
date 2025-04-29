@@ -14,6 +14,7 @@ class ICollect
 
     //- SET
     virtual bool Insert(T value) = 0;
+    virtual bool Insert(int index, T value) = 0;
     virtual bool Set(int index, T value) = 0;
     virtual bool Replace(int index, T value) = 0;
     virtual bool Remove(int index) = 0;

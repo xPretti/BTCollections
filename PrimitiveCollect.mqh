@@ -38,6 +38,7 @@ class CPrimitiveCollect : public ICollect<T>
 
     //- SET
     virtual bool Insert(T value);
+    virtual bool Insert(int index, T value);
     virtual bool Set(int index, T value);
     virtual bool Replace(int index, T value);
     virtual bool Remove(int index);
@@ -164,6 +165,43 @@ bool CPrimitiveCollect::Copy(T& values[])
     {
       ArrayCopy(values, _value);
       return (true);
+    }
+  return (false);
+}
+
+
+/**
+ * Método de insersão de valor em um index especifico
+ * Move todos os elementos para frente e insere o novo elemento na posição indicada
+ *
+ * @param index Posição
+ * @param value Valor
+ * @return true Caso seja inserido, independente se foi ou não na posição indicada
+ * @return false O valor não foi inserido
+ */
+template<typename T>
+bool CPrimitiveCollect::Insert(int index, T value)
+{
+  if(!InRange(index))
+    {
+      return (Insert(value));
+    }
+  T copyValues[];
+  int vls = ArrayCopy(copyValues, _value, 0, index);
+  if(vls > 0)
+    {
+      int lastSize = _count;
+      _selectIndex = index;
+      _lastIndex = lastSize;
+      if(Resize(_count + 1))
+        {
+          _value[index] = value;
+          for(int i = 0; i < vls; i++)
+            {
+              _value[index + i + 1] = copyValues[i];
+            }
+          return (true);
+        }
     }
   return (false);
 }
